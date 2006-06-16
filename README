@@ -1,0 +1,7 @@
+You must use gmake (GNU make) to get the rule chaining used in this Makefile.
+
+ps2pdf is in the ghostscript locker.  (add ghostscript)
+You can also use distill, in the acro locker.
+
+For general hints about LaTeX files, see
+/mit/tech-squares/lib/tex/macros/README

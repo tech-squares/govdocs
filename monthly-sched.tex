@@ -1,0 +1,136 @@
+% monthly-sched.tex --- Tech Squares monthly dance schedule
+% includes raids only if \publicfalse (see below)
+\documentclass[11pt]{article}
+\newcommand{\timestamp}{2005-03-01 gildea} %automatically updated by Emacs
+\usepackage{techlogo}
+\usepackage{headerfooter}
+
+\newif\ifpublic
+\newif\ifnextyear
+
+% true for schedule to give to other clubs, false for club members
+\publicfalse
+
+% true to include Spring of next year
+\nextyeartrue
+
+%%% Making good PDF files
+\usepackage[ps2pdf]{hyperref}
+\hypersetup{pdftitle=Tech Squares Saturday Dance Schedule}
+\hypersetup{pdfauthor=Stephen Gildea}
+\hypersetup{pdfpagemode=UseNone} %outline not visible on acroread startup
+
+\newlength{\eventskip}
+\ifpublic
+  \textwidth=6.5in
+  \eventskip=.20in
+  \textheight 9in
+\else           %include extra club-private info
+  \hoffset -.25in
+  \textwidth=7in
+  \eventskip=.20in plus .1in minus .12in
+  \voffset -.25in
+  \textheight 9.2in
+\fi
+
+\newcommand{\lineend}{\\[\eventskip]}
+\newcommand{\visiting}[1]{\\&\multicolumn{4}{l}{\quad(#1)}}
+%\multicolumn{3}{@{\quad}l}{Retrieving: Single Eights} \lineend
+
+\def\setsigfont{\global\font\sig=\fontname\font\space at 3pt}
+
+\oddsidemargin=0pt
+
+\headheight 0pt
+\headsep 0pt
+
+\pagestyle{empty}
+\parindent 0pt
+
+\def\0{\phantom{0}}
+
+\def\event#1{#1}
+
+\begin{document}
+
+\techlogoline
+
+\vspace{\baselineskip}
+
+\begin{center}
+{\Large {\bf Saturday Dance Schedule}
+
+\vskip \baselineskip
+
+\ifnextyear
+2005--2006
+\else
+2005
+\fi
+}
+
+\vspace{0.5in}
+
+{\large
+\begin{tabular}{@{}lllll@{}}
+{\em date}        & {\em event}        & {\em caller}   & {\em cuer}         & {\em location} \lineend
+
+February 12, 2005  & \event{Club dance} & Don Beck     &  Veronica McClure & Lobdell \lineend
+
+
+\ifpublic\else
+March 4--6, 2005 & \event{Club weekend}   & Vic Ceder    & Mary Pickett & Lake Shore Farm \lineend
+\fi
+
+May 7, 2005  & \event{Club dance} & Matthew Auger  &  Norma Silva & Lobdell \lineend
+
+October 1, 2005  & \event{Club dance} &	Tom Rinker &	Dave Goss & 407 \lineend
+
+November 5, 2005 & \event{Club dance} & Don Beck &	Bernie Porter & Lobdell \lineend
+
+February 11, 2006 & \event{Club dance} & Ed Renauld & Corinne Renauld & Lobdell \lineend
+
+\ifpublic\else
+March 3--5, 2006 & \event{Club weekend} & Vic Ceder & Mary Pickett & Lake Shore Farm \lineend
+\fi
+
+May 13, 2006      & \event{Club dance} & Bob Silva  & Norma Silva & Lobdell \lineend
+
+\end{tabular}
+
+}
+\end{center}
+
+\vspace{.3in plus .25in minus .25in}
+
+Club dances are 8--11~pm in the MIT Student Center,
+% second floor,
+84 Mass.~Ave, Cambridge.
+
+For more information and directions, call the Tech Squares information
+line at 617-253-7000
+\goodbreak
+or visit our Web site, http://www.mit.edu/activities/tech-squares/.
+
+\ifpublic
+\vskip\baselineskip
+%Banner Raid Director: Joe Foley
+\fi
+
+\footskip .2in
+
+\ifpublic
+\pagefooter{}{\small MIT Room W20-437, 77 Massachusetts Ave, Cambridge MA 02139-4307}{}
+\else
+{\small % to select 10pt
+ \setsigfont}
+\pagefooter{}{}{\sig \timestamp}
+\fi
+
+\end{document}
+
+% These lines instruct Emacs to automatically
+%   update the \timestamp line at the top of this file.
+% Local Variables:
+% time-stamp-pattern: "newcommand{\\\\timestamp}{%:y-%02m-%02d %u}"
+% End:
