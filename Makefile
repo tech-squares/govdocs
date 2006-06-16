@@ -46,7 +46,7 @@ all-html: $(ALLSRCS:.tex=.html)
 
 .tex.html:
 	$(LATEX2HTML) $< && \
-	ts-latex2html2web bylaws/ $*/$@ > $@
+	ts-html-convert bylaws/ $*/$@ > $@
 	rm -r $*/
 
 $(ALLSRCS:.tex=.dvi): bylaws.cls
