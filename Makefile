@@ -23,9 +23,13 @@ all-html: $(ALLSRCS:.tex=.html)
 
  LATEX = latex
  DVIPS = dvips -Ppdf
- PS2PDF = athrun gnu ps2pdf
- LATEX2HTML = latex2html
+ PS2PDF = $(ATHRUN_GNU) ps2pdf
+ LATEX2HTML = $(ATHRUN_INFOAGENTS) latex2html
  MAKEINDEX = makeindex
+
+ ATHRUN := $(shell test -x /usr/athena/bin/athrun && echo "athrun")
+ ATHRUN_GNU := $(if $(ATHRUN), $(ATHRUN) gnu)
+ ATHRUN_INFOAGENTS := $(if $(ATHRUN), $(ATHRUN) infoagents)
 
 .SUFFIXES: .tex .dvi .PS .pdf .html
 
@@ -41,7 +45,8 @@ all-html: $(ALLSRCS:.tex=.html)
 	$(PS2PDF) $(PS2PDF_FLAGS) $< $@
 
 .tex.html:
-	$(LATEX2HTML) $< && mv $*/$@ .
+	$(LATEX2HTML) $< && \
+	ts-latex2html2web bylaws/ $*/$@ > $@
 	rm -r $*/
 
 $(ALLSRCS:.tex=.dvi): bylaws.cls
@@ -56,3 +61,11 @@ clean: mostlyclean
 
 distclean: clean
 	-rm *~
+
+# Make the tar files for distributing these files.
+
+web.tar: $(ALLSRCS:.tex=.pdf) $(ALLSRCS:.tex=.html)
+	tar cf $@ $^
+	@echo " ---"
+	@echo "move $@ to /mit/tech-squares/www/bylaws, then unpack it with this command:"
+	@echo "tar xpfv $@"
