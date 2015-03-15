@@ -4,7 +4,7 @@
 # $Id$
 # This Makefile tested with GNU make
 
-SRCS = constit.tex bylaws.tex
+SRCS = constit.tex bylaws.tex policies.tex
 
 ALLSRCS = $(SRCS)
 
