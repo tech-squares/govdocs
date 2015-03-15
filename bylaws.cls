@@ -80,8 +80,8 @@
 
 
 %%% Instead of \section, \subsection, and \subsubsection,
-%%% here we have \article, \section, \subsection and \duty.
-%%% \article and \subsection take an argument, \duty does not.
+%%% here we have \article, \subarticle, \section, \subsection, and \duty.
+%%% \article and \subarticle take an argument, \subsection and \duty do not.
 %%% \section takes an argument if the "secnames" option is specified.
 
 
@@ -89,8 +89,10 @@
 % the highest-level is called "section".
 \def\thesection{Article \Roman{section}.}
 
-\def\article{\@startsection {section}{1}{\z@}{7ex\@plus 1ex \@minus .6ex}%
-  {2.3ex plus .3ex}{\large\bf\hfil}} %the \hfil centers the header
+\def\article{\@startsection {section}{1}{\z@}%
+                                     {7ex\@plus 1ex \@minus .6ex}%
+                                     {2.3ex plus .3ex}
+                                     {\large\bf\hfil}} %the \hfil centers the header
 
 \def\sectionmark#1{}
 
@@ -110,13 +112,15 @@
   \let\section\unnamed@section
 \fi
 
-
-\renewcommand\subsection{\@startsection{subsubsection}{3}{\z@}%
-                                     {-3.25ex\@plus -1ex \@minus -.2ex}%
+\newcommand\subarticle{\@startsection{subsection}{3}{\parindent}%
+                                     {3.25ex\@plus -1ex \@minus -.2ex}%
                                      {1.5ex \@plus .2ex}%
                                      {\normalfont\normalsize\bfseries}}
 
-\def\thesubsubsection{Subsection \Alph{subsubsection}.}
+\def\subsection{\par\vskip 1ex
+  \stepcounter{subsubsection} \thesubsubsection \hskip 1em\relax}
+
+\def\thesubsubsection{Section \arabic{subsection}.\Alph{subsubsection}.}
 
 
 \newdimen\dutywidth
