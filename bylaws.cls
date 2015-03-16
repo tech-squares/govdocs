@@ -94,6 +94,11 @@
                                      {2.3ex plus .3ex}
                                      {\large\bf\hfil}} %the \hfil centers the header
 
+\def\policy{\@startsection {section}{1}{\z@}%
+                                     {7ex\@plus 1ex \@minus .6ex}%
+                                     {2.3ex plus .3ex}
+                                     {\large\bf}}
+
 \def\sectionmark#1{}
 
 \newcommand\named@section{\@startsection{subsection}{2}{\z@}%
