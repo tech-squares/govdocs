@@ -1,0 +1,45 @@
+Constitution changes:
+
+- EC updates to be compatible with ASA rules
+    - EC must be at least half MIT students
+    - Added members-at-large to the EC, made them elected, and allowed them to vote
+    - Removed Secretary
+    - Made Vice President a permanent position
+    - Clarified how a Vice Treasurer is made to exist
+    - EC contains 7-8 people 
+
+- Club meetings are no longer required to be once a semester
+
+- Other updates to be compatible with ASA rules
+    - Removed the requirement that half the members be students
+    - Students have 50% of the voting power on all votes 
+
+- Quorum requirement is now 25% of the voting members and 25% of student voting members
+
+- Made explicit that the EC can override officer decisions
+
+- Changes to a proposed amendment can be made up to the time it is voted on
+
+- Moved mentions of specific appointed officer positions to standing policies
+
+- Other small changes to make the constitution in line with current practice 
+
+
+Standing Policies:
+
+- Replaced the Constitution and Bylaws with the Constitution and Standing Policies 
+    - Each Standing Policy is up for renewal every 3 years
+    - Policies may be adopted or amended by majority vote of the club or the EC
+    - Open EC meetings will be held to discuss policies up for renewal
+
+- Closed EC meetings to discuss sensitive information are explicitly covered
+
+- Up to one class per year can be MIT students only at the discretion of EC
+
+- Added language to cover removing people from the class
+
+- The EC needs to approve the class graduation list
+
+- Added a list of collective EC responsibilities that may be turned into appointed officerships
+
+- More explicit language surrounding appointments
