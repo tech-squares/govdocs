@@ -1,8 +1,7 @@
 *.dvi
 *.aux
-*.PS
+*.ps
 *.pdf
-*.LOG
 *.log
 *.idx
 *.toc
