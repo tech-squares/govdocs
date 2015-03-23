@@ -8,7 +8,7 @@ Constitution changes:
     - Clarified how a Vice Treasurer is made to exist
     - EC contains 7-8 people 
 
-- Club meetings are no longer required to be once a semester
+- Club meetings are no longer required to be once a semester (at least one a year is still required because of elections)
 
 - Other updates to be compatible with ASA rules
     - Removed the requirement that half the members be students

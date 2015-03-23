@@ -1,4 +1,7 @@
 \documentclass{article}
+
+\usepackage{hyperref}
+
 \addtolength{\topmargin}{-1cm}
 \addtolength{\textheight}{2cm}
 \addtolength{\oddsidemargin}{-1.5cm}
@@ -36,8 +39,11 @@ The MIT Association of Student Activities recognizes us as an MIT student group,
 
 The ASA recently changed their rules and gave student groups the option to adopt the new rules. The new rules we can actually follow; they require that 50\% of the votes on each issue belong to students and 50\% of the executive board be students.
 
-\subsubsection*{How will you run club votes with these rules?}
-We expect that for contested club votes the chair of the meeting will call for a show of hands for each of these 4 groups: students voting for, non-students voting for, students voting against, non-students voting against. Someone will take down the numbers, and calculate the result of the vote. This should be easy and quick to do with a spreadsheet on a computer.
+\subsubsection*{How are elections going to be implemented?}
+Before we start voting, we'll get a count of how many students and how many non-student voting members are present and planning on voting in the election. If there are more non-students than students, votes will be scaled.  Then for each election, for each candidate, we'll ask for a show of hands of students who approve and non-students who approve. Then votes will be scaled; the fraction of students who approved of a candidate will be averaged with the fraction of non-students who approved to get a final approval rating. The candidate (or candidates) with the highest approval ratings are elected if they have final approval ratings of at least one-half.
+
+\subsubsection*{Why are we using approval voting?}
+With approval voting, voters can vote for as many candidates as they like. If four candidates are running for a position, a voter may vote for zero, one, two, three, or all four candidates (although a vote for zero or four has no impact on the outcome, other than determining whether anybody can be elected). This allows a voter to vote for their favorite candidate while also voting for the candidate they think would be okay, and more likely to win. While there are degenerate situations where any voting system produces unfortunate results (see \href{http://en.wikipedia.org/wiki/Arrow's_impossibility_theorem}{Arrow's theorem} and some related theorems), there are fewer real-life situations where approval voting fails. Also, since voters can vote for several candidates in the first round of voting, approval voting should reduce the number of rounds of voting needed for someone to win with a majority of votes -- usually to a single ballot -- and reduce the time of elections.
 
 \subsubsection*{Why change the membership of the EC the way you do?}
 As mentioned above, to be compatible with the new ASA rules, we need the EC to be 50\% students. In coming to the results that we did, we balanced a few concerns including keeping people who do a lot of work for the club on the EC, having a reasonable sized EC, and having smoothly running elections. Under the current constitution, our EC has 5-7 people (currently 7) and we felt that 7 was a good size for holding useful meetings. We thought pushing it to 8 would be okay, but that we didn't want to push it to 9 or 10. Because of the 50\% rule, it makes sense for our max EC size to be even.
@@ -48,9 +54,10 @@ We felt that the positions of President, VP, Treasurer, VT, Class Coordinator, a
 For having 50\% students on the EC, it is useful to have a close to stable sized EC, so we know how many student positions and open positions there will be prior to elections. VP is a useful role, regardless of how much work the President does. Sometime the President and VP split the President's responsibilities in some fashion, which is what happens currently when the President requests a VP. Even if the [student] President plans on doing all the President's duties, we felt that having a  VP would be useful. The VP could be an experienced person the President could go to for advice. They could do the President's job if the President is temporarily too busy. Always having a VP also allowed us to do away with the complicated vacancy rules around president.
 
 \subsubsection*{Why is there no secretary?}
-We decided that rather than require one person on the EC do all the jobs the Secretary currently does (which are somewhat eclectic), they could be divided up among the EC and appointed officers as appropriate. A person who is good at taking minutes at meetings may not be suited to handling the club correspondence, for instance, and there's no good reason for these jobs to go together.
+Keeping all current positions and allowing them all to be filled by non-students, except for President and Treasurer (which are required by the ASA to be students), would have required the EC have ten members. We didn't want that, which meant that if we were to keep the Secretary, they would sometimes but not always need to be a student.
 
-Also, having a secretary would make elections more complicated. The new EC structure does not cause problems for nominations; aside from the President and Treasurer who must be students, the other officer positions will always be open to non-students, and the only question is how many Members-at-Large we will have, and how many will be students. This means people won't be running for a specific position and then finding out during the election that, actually, that position is now only open to a student. If we kept a Secretary position, it would have been the last position elected before the Members-at-Large, and therefore, sometimes but not always, would have needed to be a student, depending on who got elected to the other positions. We thought this would be unfair to people running for the EC.
+Without a Secretary, the new EC structure does not cause problems for nominations; aside from the President and Treasurer, the other officer positions will always be open to non-students, and the only question is how many Members-at-Large we will have, and how many will be students. This means people won't be running for a specific position and then finding out during the election that, actually, that position is now only open to a student. If we kept a Secretary position, it would have been the last position elected before the Members-at-Large, and therefore, sometimes but not always, would have needed to be a student, depending on who got elected to the other positions. We thought this would be unfair to people running for the EC.
+
 
 \section{Miscellany}
 
