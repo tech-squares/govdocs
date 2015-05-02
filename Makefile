@@ -4,9 +4,9 @@
 # $Id$
 # This Makefile tested with GNU make
 
-SRCS = constit.tex policies.tex 2015faq.tex
+SRCS = constit.tex policies.tex
 
-ALLSRCS = $(SRCS)
+ALLSRCS = $(SRCS) 2015faq.tex
 
 
 all: all-pdf all-html
@@ -48,6 +48,8 @@ all-html: $(ALLSRCS:.tex=.html)
 $(ALLSRCS:.tex=.dvi): bylaws.cls
 $(ALLSRCS:.tex=.html): bylaws.perl
 
+2015faq.html : hyperref.perl
+
 
 mostlyclean:
 	-rm *.aux *.out *.log *.dvi *.ilg *.ind *.ps
@@ -60,7 +62,7 @@ distclean: clean
 
 # Make the tar files for distributing these files.
 
-web.tar: $(ALLSRCS:.tex=.pdf) $(ALLSRCS:.tex=.html)
+web.tar: $(SRCS:.tex=.pdf) $(SRCS:.tex=.html)
 	tar cf $@ $^
 	@echo " ---"
 	@echo "move $@ to /mit/tech-squares/www/bylaws, then unpack it with this command:"
