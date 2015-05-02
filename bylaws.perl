@@ -61,6 +61,36 @@ sub do_cmd_article{
         "Article $romart.&nbsp;  $artname<\/a><\/h2>$rest");
 }
 
+sub do_cmd_policy{
+    local($_) = @_;
+    s/$next_pair_pr_rx//o;
+    local($artname) = $2;
+    local($rest) = $_;
+    $article_num++;
+    $section_num = 0;
+    $subsection_num = 0;
+    local($was_in_duty) = $in_duty;
+    $in_duty = 0;
+    join('',
+	$was_in_duty ? "</ul>\n" : "",
+	"<h2 align=\"center\"><a name=\"sp$article_num\">",
+        "Standing Policy $article_num.&nbsp;  $artname<\/a><\/h2>$rest");
+}
+
+sub do_cmd_subarticle{
+    local($_) = @_;
+    s/$next_pair_pr_rx//o;
+    local($artname) = $2;
+    local($rest) = $_;
+    $section_num++;
+    $subsection_num = 0;
+    local($was_in_duty) = $in_duty;
+    $in_duty = 0;
+    join('',
+	$was_in_duty ? "</ul>\n" : "",
+        "Section $section_num.&nbsp;  $artname<\/a><\/h2>$rest");
+}
+
 $section_num = 0;
 
 sub do_cmd_section{
@@ -93,8 +123,7 @@ sub do_cmd_subsection{
     $in_duty = 0;
     join('',
 	$was_in_duty ? "</ul>\n" : "",
-	"<b>",
-        "Subsection $alphsubsection.&nbsp;  $subsectionname<\/b><p>$rest");
+        "<p>\nSection $section_num.$alphsubsection.&nbsp;  ", $rest);
 }
 
 $in_duty = 0;
