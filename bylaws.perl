@@ -58,7 +58,37 @@ sub do_cmd_article{
     join('',
 	$was_in_duty ? "</ul>\n" : "",
 	"<h2 align=\"center\"><a name=\"article$article_num\">",
-        "Article $romart.&nbsp;  $artname<\/a><\/h2>$rest");
+        "Article $romart.  $artname<\/a><\/h2>$rest");
+}
+
+sub do_cmd_policy{
+    local($_) = @_;
+    s/$next_pair_pr_rx//o;
+    local($artname) = $2;
+    local($rest) = $_;
+    $article_num++;
+    $section_num = 0;
+    $subsection_num = 0;
+    local($was_in_duty) = $in_duty;
+    $in_duty = 0;
+    join('',
+	$was_in_duty ? "</ul>\n" : "",
+	"<h2 align=\"center\"><a name=\"sp$article_num\">",
+        "Standing Policy $article_num.  $artname<\/a><\/h2>$rest");
+}
+
+sub do_cmd_subarticle{
+    local($_) = @_;
+    s/$next_pair_pr_rx//o;
+    local($artname) = $2;
+    local($rest) = $_;
+    $section_num++;
+    $subsection_num = 0;
+    local($was_in_duty) = $in_duty;
+    $in_duty = 0;
+    join('',
+	$was_in_duty ? "</ul>\n" : "",
+	"<h3>Section $section_num.  $artname<\/h3>$rest");
 }
 
 $section_num = 0;
@@ -77,8 +107,8 @@ sub do_cmd_section{
     join('',
 	$was_in_duty ? "</ul>\n" : "",
 	$secnames ?
-	    "\n<h3>Section $section_num.&nbsp;  $sectionname<\/h3>" :
-	    "<p>\nSection $section_num.&nbsp;  ",
+	    "\n<h3>Section $section_num.  $sectionname<\/h3>" :
+	    "<p>\nSection $section_num.  ",
 	$after);
 }
 
@@ -93,8 +123,7 @@ sub do_cmd_subsection{
     $in_duty = 0;
     join('',
 	$was_in_duty ? "</ul>\n" : "",
-	"<b>",
-        "Subsection $alphsubsection.&nbsp;  $subsectionname<\/b><p>$rest");
+        "<p>\nSection $section_num.$alphsubsection.  ", $rest);
 }
 
 $in_duty = 0;
@@ -141,9 +170,12 @@ sub do_cmd_issue{
 sub do_env_comment { ""; }
 
 sub bot_navigation_panel {
+    local($was_in_duty) = $in_duty;
+    $in_duty = 0;
+    ($was_in_duty ? "</ul>\n" : "") .
     "<hr><p>\n".
     do {"$bottom_date<br>\n" if $bottom_date;}.
-    do {'Up: <a href="./">Constitution/Bylaws Index</a><br>'."\n".
+    do {'Up: <a href="./">Governing Documents Index</a><br>'."\n".
 	'Top: <a href="../">Tech Squares</a>'."\n" if !$mitbdt;}
 }
 

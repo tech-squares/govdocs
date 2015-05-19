@@ -1,0 +1,117 @@
+\documentclass{article}
+
+\usepackage{hyperref}
+
+\addtolength{\topmargin}{-1cm}
+\addtolength{\textheight}{2cm}
+\addtolength{\oddsidemargin}{-1.5cm}
+\addtolength{\evensidemargin}{-1.5cm}
+\addtolength{\textwidth}{3cm}
+
+\title{FAQ}
+\author{Veronica Boyce and Alex Dehnert}
+\date{April 1, 2015}
+
+\begin{document}
+
+\maketitle
+
+\subsubsection*{What has changed since this was initially mailed out to the club?}
+\begin{description}
+\item[Clarified how abstentions interact with student voting power (3/30)] During the 3/24 Q\&A session, it became clear that the constitution was inadequately clear about exactly how student voting power scaling worked, particularly with abstentions. Article VI, Sections 5--7 of the Constitution were updated to make this clearer. See ``How does the student voting power scaling work? Why did you choose this mechanism?'' below for details.
+\item[Various changes (3/31)] A variety of minor changes to improve clarity:
+  \begin{itemize}
+  \item Added ``The standing policies shall state criteria for graduation from the class.'' back to the Constitution (IV.4) -- it was in the old Constitution, and got removed for no particular reason
+  \item Clarified the quorum requirement (Constitution VI.3) by adding ``total'' before ``voting membership''
+  \item Updated SP4.1 to clearly permit people to run without attending the elections meeting, but discourage it. Also updated SP5.2.A to specify ``voting proxies'', not ``proxies''. (Having somebody speak for you is fine; they just can't exercise your vote.)
+  \item Replaced standing policy expiration with a required review of the standing policies, in order to prevent a constitutional crisis (wherein, say, we no longer have a club level) if an EC one year fails to conduct the required review.
+  \item Combined SP6.1 and SP6.3 to avoid the ambiguous use of ``generally''
+  \end{itemize}
+
+\end{description}
+
+\section{Big Picture}
+
+\subsubsection*{Why did you get rid of the bylaws?}
+The old governing documents consisted of two hard-to-amend, somewhat out-dated documents. I suspect the out-datedness was in part because they were hard to amend, and in part because people rarely looked at them. We decided to put everything that either needed to be in the constitution or that we thought no one would want to change for 10 years in the constitution. We added a new document that would contain things that might need to be changed to be kept up to date (like what duties each officer has). These are the standing policies, and we hope they will stay up to date due to being looked at, and amended as necessary, every three years. Most of the content that was in the Bylaws has ended up in one of the current documents.
+
+\subsubsection*{Why not just amend parts of the Constitution?}
+There were several amendments that we wanted to make, and we'd also been noticing that a lot of the details in the Constitution and Bylaws were not in line with current practices. So rather than propose several amendments and leave our governing documents out of date, we took this opportunity to clean up the language where necessary and restructure it in a way that made more sense. Where sections of the Constitution made sense, we left them; a lot of the language in the new Constitution comes directly from language in the old Constitution or Bylaws.
+
+\subsubsection*{How will the transition work?}
+One potential problem with restructuring officerships in the new Constitution is that we will have an election under the current rules a couple weeks before we approve the new Constitution, and we won't want to redo elections.
+
+If we elect at least 3 MIT students to the EC (President, Treasurer, and one other officer), then the transition will be easy. All elected officers except for the Secretary will retain their positions, Secretary will remain on the EC as a Member-at-Large, and we will need to elect one student Member-at-Large to fill out our new EC. We expect that the new EC will then solicit nominations for and select appointed officers.
+
+If we only elect 2 MIT students, we will have the Secretary leave the EC when their position is disolved, and hold elections for the two new student members-at-large.
+
+
+\section{ASA 5/50\% Changes}
+
+\subsubsection*{Why are you giving students half the votes?}
+The MIT Association of Student Activities recognizes us as an MIT student group, allowing us to get dance space and some other useful resources for free. In return, they have several rules. Until recently, this included requiring that half our active members be students, which we did not follow in anything other than name.
+
+The ASA recently changed their rules and gave student groups the option to adopt the new rules. The new rules we can actually follow; they require that 50\% of the votes on each issue belong to students and 50\% of the executive board be students. For details on the rules, see the "Changes to 5/50 Policy" section of \url{https://mailman.mit.edu/pipermail/asa-official/2014-June/000221.html}.
+
+\subsubsection*{How does the student voting power scaling work? Why did you choose this mechanism?}
+
+When there are more students present and voting (not abstaining) than non-students, voting is as you're probably used to -- people raise their hands for ``yes'' and ``no'' separately, and whichever has more hands wins.
+
+When there are more non-students present and voting than students, the ASA requires us to scale the student votes so that half the voting power belongs to students. Essentially, students and non-students will vote separately, we'll compute the fraction of ``yes'' votes for the two separately, and average them. If it's over 50\% (or other applicable applicable threshold), the vote passes.
+
+Prior versions of the Constitution were unclear about how this would work, with two main interpretations based on how abstentions are treated:
+\begin{description}
+\item[``Yes fraction'' (abstentions treated as not present)] Take $\frac{\mbox{number of ``yes'' votes}}{\mbox{number of ``yes'' or ``no'' votes}}$ for students and average it with the value for students.
+\item[``Voting shares'' (abstaining but present scales votes differently from not present)] Give each non-student one ``voting share''. Take the same number of voting shares, and evenly distribute them amongst the students (so each student will get $\frac{\mbox{non-students}}{\mbox{students}}$ shares). Take $\frac{\mbox{number of ``yes'' shares}}{\mbox{number of ``yes'' or ``no'' shares}}$.
+\end{description}
+
+We chose to go with the former for several reasons:
+\begin{description}
+\item[Simplicity] The ``yes fraction'' is easy to understand and easy to implement (even just in one's mind). Both Alex and Veronica tried independently to implement both methods using a spreadsheet. Both of us implemented the yes fraction quickly and correctly on our first try. For both of us, implementing voting shares was much slower and involved several incorrect attempts.
+\item[Upon close reading, matched the constitution draft] The original constitution stated ``abstentions count as not voting''. While this was in the context of defining, for example, a ``two-thirds'' vote (and somewhat hidden), it presumably also applied to the vote scaling section immediately preceding.
+\item[Matches ASA requirements] Wikipedia states that ``an abstaining voter hasn't voted''. The ASA's email states ``at least half of the votes on each issue voted at in a meeting of the group or its subcommittees must belong to students''. This suggests that vote scaling may need to be based on the ``yes'' and ``no'' votes, not abstentions.
+\item[Philosophy on abstentions] I've been present at meetings where passage was based on $\frac{\mbox{those voting ``yes''}}{\mbox{those present}}$, and people have \emph{left the room} so their abstention wasn't equivalent to a ``no'' vote. I tend to believe that abstentions should be largely equivalent to leaving the room, so that sort of behavior isn't encouraged.
+\end{description}
+
+While none of these entirely rule out ``voting shares'', they are all (varyingly compelling) arguments in favor of using the ``yes fraction''.
+
+To clarify this behavior, the original constitution draft was updated to remove ``Abstentions count as not voting'' from Article VI, Section 6, and ``Abstentions count toward quorum, but do not count as voting'' was added as a new Section 5.
+
+\subsubsection*{How are elections going to be implemented?}
+Before we start voting, we'll get a count of how many students and how many non-student voting members are present and planning on voting in the election. If there are more non-students than students, votes will be scaled.  Then for each election, for each candidate, we'll ask for a show of hands of students who approve and non-students who approve. Then votes will be scaled; the fraction of students who approved of a candidate will be averaged with the fraction of non-students who approved to get a final approval rating. The candidate (or candidates) with the highest approval ratings are elected if they have final approval ratings of at least one-half.
+
+\subsubsection*{Why are we using approval voting?}
+With approval voting, voters can vote for as many candidates as they like. If four candidates are running for a position, a voter may vote for zero, one, two, three, or all four candidates (although a vote for zero or four has no impact on the outcome, other than determining whether anybody can be elected). This allows a voter to vote for their favorite candidate while also voting for the candidate they think would be okay, and more likely to win. While there are degenerate situations where any voting system produces unfortunate results (see \href{http://en.wikipedia.org/wiki/Arrow's_impossibility_theorem}{Arrow's theorem} and some related theorems), there are fewer real-life situations where approval voting fails. Also, since voters can vote for several candidates in the first round of voting, approval voting should reduce the number of rounds of voting needed for someone to win with a majority of votes -- usually to a single ballot -- and reduce the time of elections.
+
+\subsubsection*{Why change the membership of the EC the way you do?}
+As mentioned above, to be compatible with the new ASA rules, we need the EC to be 50\% students. In coming to the results that we did, we balanced a few concerns including keeping people who do a lot of work for the club on the EC, having a reasonable sized EC, and having smoothly running elections. Under the current constitution, our EC has 5-7 people (currently 7) and we felt that 7 was a good size for holding useful meetings. We thought pushing it to 8 would be okay, but that we didn't want to push it to 9 or 10. Because of the 50\% rule, it makes sense for our max EC size to be even.
+
+We felt that the positions of President, VP, Treasurer, VT, Class Coordinator, and Publicity Coordinator were all important and should remain on the EC. We didn't want to force students to fill the roles of VP, VT, Class Coordinator, or Publicity Coordinator, so this means we needed an EC of 8. We filled out the EC with elected  Members-at-Large.
+
+\subsubsection*{Why is VP now permanent?}
+For having 50\% students on the EC, it is useful to have a close to stable sized EC, so we know how many student positions and open positions there will be prior to elections. VP is a useful role, regardless of how much work the President does. Sometime the President and VP split the President's responsibilities in some fashion, which is what happens currently when the President requests a VP. Even if the [student] President plans on doing all the President's duties, we felt that having a  VP would be useful. The VP could be an experienced person the President could go to for advice. They could do the President's job if the President is temporarily too busy. Always having a VP also allowed us to do away with the complicated vacancy rules around president.
+
+\subsubsection*{Why is there no secretary?}
+Keeping all current positions and allowing them all to be filled by non-students, except for President and Treasurer (which are required by the ASA to be students), would have required the EC have ten members. We didn't want that, which meant that if we were to keep the Secretary, they would sometimes but not always need to be a student.
+
+Without a Secretary, the new EC structure does not cause problems for nominations; aside from the President and Treasurer, the other officer positions will always be open to non-students, and the only question is how many Members-at-Large we will have, and how many will be students. This means people won't be running for a specific position and then finding out during the election that, actually, that position is now only open to a student. If we kept a Secretary position, it would have been the last position elected before the Members-at-Large, and therefore, sometimes but not always, would have needed to be a student, depending on who got elected to the other positions. We thought this would be unfair to people running for the EC.
+
+
+\section{Miscellany}
+
+\subsubsection*{What happened to historian?}
+We decided that constitutionally mandating specific appointed officerships was unnecessary and would be a good way to make sure the constitution went out of date sooner, which we are hoping to avoid. In the Standing Policies, we specified the appointed positions that the club currently cannot function without (Booking, Rooming, Rounds) and left other positions up to the EC. If the EC decides that it wants to appoint a Historian, it can, just as it can appoint any other position it feels would be useful.
+
+\subsubsection*{Who's the dance coordinator?}
+The dance coordinator is the person who is responsible for making sure that all aspects of the dance go smoothly. For weekly dances, where we have routines that help the dance run well, we don't particularly need a dance coordinator.
+
+For Saturday dances, the fact that they're irregular means they're harder to run. In fact, we sometimes have problems that no one coordinates jobs, or refreshments, or much of anything. By having a specific Saturday dance coordinator, there's someone who's in change of arranging the jobs for the dance, making sure the caller and cuer managed to park, and dealing with anything else special going on with the dance.
+
+\subsubsection*{What's going on with the 4 of 15 consecutive dances?}
+Under the current constitution, the criteria for being a voting member is attending 5 Tuesday or Saturday dances in the past 4 months (with an exception for summer months). As I was calculating the voting membership recently, I noticed that the number of dances during the past 4 months is lower than normal because we missed roughly 4 weeks between the winter holidays and snow storms. We decided to standardize it so this kind of thing wouldn't be an issue. In the past, when the current rules were made, Saturday dances were monthly, and the criteria was such that you couldn't be a voting member by just going to Saturday dances. This is not a concern anymore, so we came up with a fraction of Tuesday dances that would be similar in effect to what the 5 in 4 months currently meant. We kept the effect of the summer exception, and also changed the attendance requirement for non-class members seeking to be club members to 4 of 15 consective Tuesday dances to be consistent.
+
+\subsubsection*{What about questions not addressed here?}
+If you have additional questions, we're happy to answer them or add them to the FAQ. Contact us at squares@mit.edu.
+
+
+\end{document}
