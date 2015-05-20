@@ -52,7 +52,7 @@ $(ALLSRCS:.tex=.html): bylaws.perl
 
 
 mostlyclean:
-	-rm *.aux *.out *.log *.dvi *.ilg *.ind *.ps
+	-rm *.aux *.out *.log *.dvi *.ilg *.ind *.ps web.tar
 
 clean: mostlyclean
 	-rm *.idx *.pdf *.html
