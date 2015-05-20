@@ -42,7 +42,7 @@ all-html: $(ALLSRCS:.tex=.html)
 
 .tex.html:
 	$(LATEX2HTML) $< && \
-	/mit/tech-squares/arch/@sys/bin/ts-html-convert bylaws/ $*/$@ > $@
+	/mit/tech-squares/arch/@sys/bin/ts-html-convert govdocs/ $*/$@ > $@
 	rm -r $*/
 
 $(ALLSRCS:.tex=.dvi): bylaws.cls
@@ -65,5 +65,8 @@ distclean: clean
 web.tar: $(SRCS:.tex=.pdf) $(SRCS:.tex=.html)
 	tar cf $@ $^
 	@echo " ---"
-	@echo "move $@ to /mit/tech-squares/www/bylaws, then unpack it with this command:"
+	@echo "move $@ to /mit/tech-squares/www/govdocs, then unpack it with this command:"
 	@echo "tar xpfv $@"
+
+install: web.tar
+	tar xpfv web.tar -C /mit/tech-squares/www/govdocs
