@@ -67,6 +67,8 @@ web.tar: $(SRCS:.tex=.pdf) $(SRCS:.tex=.html)
 	@echo " ---"
 	@echo "move $@ to /mit/tech-squares/www/govdocs, then unpack it with this command:"
 	@echo "tar xpfv $@"
+	@echo "Alternatively, if you're on Athena already, just run"
+	@echo "tar -vx -C /mit/tech-squares/www/govdocs/ -f web.tar"
 
 install: web.tar
 	tar xpfv web.tar -C /mit/tech-squares/www/govdocs
