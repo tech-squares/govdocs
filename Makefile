@@ -72,3 +72,6 @@ web.tar: $(SRCS:.tex=.pdf) $(SRCS:.tex=.html)
 
 install: web.tar
 	tar xpfv web.tar -C /mit/tech-squares/www/govdocs
+
+install-stage: web.tar
+	tar xpfv web.tar -C /mit/tech-squares/www/govdocs-stage
