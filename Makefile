@@ -16,6 +16,8 @@ all-ps: $(ALLSRCS:.tex=.ps)
 all-pdf: $(ALLSRCS:.tex=.pdf)
 all-html: $(ALLSRCS:.tex=.html)
 
+ TS_HTML_CONVERT = /mit/tech-squares/arch/@sys/bin/ts-html-convert
+
  TEXLIBDIR=/mit/tech-squares/lib/tex/macros:../../lib/tex/macros
 
  LATEX_ENV=TEXINPUTS=.:$(TEXLIBDIR):
@@ -42,7 +44,7 @@ all-html: $(ALLSRCS:.tex=.html)
 
 .tex.html:
 	$(LATEX2HTML) $< && \
-	/mit/tech-squares/arch/@sys/bin/ts-html-convert govdocs/ $*/$@ > $@
+	$(TS_HTML_CONVERT) govdocs/ $*/$@ > $@
 	rm -r $*/
 
 $(ALLSRCS:.tex=.dvi): bylaws.cls
