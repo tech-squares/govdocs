@@ -6,6 +6,8 @@ $INFO = 0;
 $MAX_SPLIT_DEPTH = 0;
 $STYLESHEET = '';
 
+# LaTeX->HTML conversions work with by using a table to generate perl subs
+# using eval. We need to update the table, and then regenerate the subs.
 %standard_section_headings = (
     'part'          => 'H1',
     'chapter'       => 'H1',
@@ -15,7 +17,7 @@ $STYLESHEET = '';
     'paragraph'     => 'H5',
     'subparagraph'  => 'H6',
 );
-print Dumper(\%standard_section_headings);
+&generate_sectioning_subs;
 
 sub do_cmd_date {
     local($_) = @_;
