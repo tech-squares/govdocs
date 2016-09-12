@@ -48,7 +48,7 @@ all-html: $(ALLSRCS:.tex=.html)
 	rm -r $*/
 
 $(ALLSRCS:.tex=.dvi): bylaws.cls
-$(ALLSRCS:.tex=.html): bylaws.perl
+$(ALLSRCS:.tex=.html): bylaws.perl $(TS_HTML_CONVERT)
 safer-dances.html : article.perl hyperref.perl
 
 2015faq.html : hyperref.perl

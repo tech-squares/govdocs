@@ -1,13 +1,34 @@
 \documentclass{article}
+% html and hyperref both define \hyperref, but hyperref's seem to be better,
+% so it goes second.
+\usepackage{html} % LaTeX2HTML utilities
+\usepackage{hyperref}
+
+\newcommand{\baseurl}{\latexhtml{http://www.mit.edu/~tech-squares/govdocs/}{}}
+\newcommand{\matchextension}{.\latexhtml{pdf}{html}}
+\newcommand{\matchlink}[2]{\href{\baseurl#1\matchextension}{#2}}
+
 \title{Safer Dances Policy}
+\author{Tech Squares}
 \date{}
+\hypersetup{pdftitle=Tech Squares Safer Dances Policy}
+
+% Margins
+\oddsidemargin=.125in
+\textwidth=6.25in
+\topmargin=0in
+\headheight=0in
+\headsep=0in
+\textheight=9in
+\parskip=.4\baselineskip % blank space between paragraphs
+
 \begin{document}
 
 \maketitle
 
 Tech Squares strives to have an environment that is comfortable for all participants. Square dancing involves close physical proximity, hand-holding, and other forms of physical contact, which are not present in many other activities. While at a Tech Squares event, participants should get consent for all interactions that are not part of the cultural norm at Tech Squares. We do not tolerate harassment of dancers or other Tech Squares participants in any form.
 
-Tech Squares participants violating these rules may be sanctioned at the discretion of the Executive Committee. As an MIT student group, Tech Squares is also bound by MIT policies (such as the harassment and non-discrimination policies) and applicable laws. Violations of this policy and instances of concerning behavior can be reported to a Tech Squares Safer Dances Coordinator ([names]), the organizer of the event, another Tech Squares officer whom you feel more comfortable with or who is more immediately available, or appropriate MIT officials or law enforcement personnel (see the Resources section).
+Tech Squares participants violating these rules may be sanctioned at the discretion of the Executive Committee. As an MIT student group, Tech Squares is also bound by MIT policies (such as the \href{http://handbook.mit.edu/harassment}{harassment} and \href{http://web.mit.edu/referencepubs/nondiscrimination/}{non-discrimination} policies) and applicable laws. Violations of this policy and instances of concerning behavior can be reported to a Tech Squares Safer Dances Coordinator ([names]), the organizer of the event, another \href{http://www.mit.edu/~tech-squares/officers.html}{Tech Squares officer} whom you feel more comfortable with or who is more immediately available, or appropriate MIT officials or law enforcement personnel (see the \hyperref[sec:resources]{Resources section}).
 
 This policy applies to all Tech Squares events, defined as not only our regular Tuesday and Saturday dances but also all other events using Tech Squares resources, such as rooms reserved through Tech Squares. This policy also applies to interactions taking place in relation to Tech Squares events (for example, conversations after the official ending of a Tuesday dance).
 
@@ -15,7 +36,7 @@ This policy applies to all Tech Squares events, defined as not only our regular 
 
 At Tech Squares, expected behavior between fellow dancers includes physical contact (mainly on the arms, hands, and shoulders) during dancing, eye contact while dancing, and friendly conversation during breaks. Our culture includes a number of optional flourishes, and dancers should be aware that other dancers may decline them. Dancers may offer flourishes, but should only complete them if the other dancer is also offering to do the flourish. Dancers who are unsure of how to accept or decline flourishes, or how to interpret others' responses, are encouraged to ask an officer for advice or seek verbal consent from other dancers before flourishing.
 
-At Tech Squares, most dancers switch partners between tips and dance with a wide variety of other participants. Dancers always have the right to decline to dance with anyone without a need to give a reason; a simple “No thanks” should always suffice. Declining to dance with one person does not preclude dancing that tip with someone else. Pressuring people to dance, or asking someone to dance when they have already indicated disinterest in dancing with you, is unacceptable.
+At Tech Squares, most dancers switch partners between tips and dance with a wide variety of other participants. Dancers always have the right to decline to dance with anyone without a need to give a reason; a simple ``No thanks'' should always suffice. Declining to dance with one person does not preclude dancing that tip with someone else. Pressuring people to dance, or asking someone to dance when they have already indicated disinterest in dancing with you, is unacceptable.
 
 Many of our members have developed strong relationships with each other, and display more intimate behavior (hugs, intimate conversation, etc.) but it should be stressed that hugging or other intimate behavior requires consent and is not a generally expected part of our events.
 
@@ -40,7 +61,7 @@ If a participant engages in prohibited behavior, Tech Squares officers may take 
 
 Tech Squares officers (including event organizers) may take immediate action to redress anything designed to, or with the clear impact of, disrupting the event or making the environment hostile for any participants.
 
-Further details on the enforcement process are in the procedures document.
+Further details on the enforcement process are in the \matchlink{safer-dances-procedures}{procedures document}.
 
 \section{Reporting}
 
@@ -69,6 +90,7 @@ Reports made to event organizers and Tech Squares officers will generally be pas
 We will be happy to help you contact MIT officials, law enforcement, or local support services; provide escorts; or otherwise assist you in feeling safe. We value your participation.
 
 \section{Resources}
+\label{sec:resources}
 
 MIT's Title IX office has a list of resources that can be helpful for getting MIT to take disciplinary action or getting counseling. They also publish details on how reporting works. The MIT Police can be reached at 617-253-1212.
 
