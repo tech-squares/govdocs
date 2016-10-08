@@ -4,7 +4,7 @@
 # $Id$
 # This Makefile tested with GNU make
 
-SRCS = constit.tex policies.tex
+SRCS = constit.tex policies.tex safer-dances.tex safer-dances-procedures.tex
 
 ALLSRCS = $(SRCS) 2015faq.tex
 
@@ -15,6 +15,8 @@ all-dvi: $(ALLSRCS:.tex=.dvi)
 all-ps: $(ALLSRCS:.tex=.ps)
 all-pdf: $(ALLSRCS:.tex=.pdf)
 all-html: $(ALLSRCS:.tex=.html)
+
+ TS_HTML_CONVERT = /mit/tech-squares/arch/@sys/bin/ts-html-convert
 
  TEXLIBDIR=/mit/tech-squares/lib/tex/macros:../../lib/tex/macros
 
@@ -42,12 +44,12 @@ all-html: $(ALLSRCS:.tex=.html)
 
 .tex.html:
 	$(LATEX2HTML) $< && \
-	/mit/tech-squares/arch/@sys/bin/ts-html-convert govdocs/ $*/$@ > $@
+	$(TS_HTML_CONVERT) govdocs/ $*/$@ > $@
 	rm -r $*/
 
 $(ALLSRCS:.tex=.dvi): bylaws.cls
-$(ALLSRCS:.tex=.html): bylaws.perl
-
+$(ALLSRCS:.tex=.html): bylaws.perl $(TS_HTML_CONVERT)
+safer-dances.html safer-dances-procedures.html : article.perl hyperref.perl
 2015faq.html : hyperref.perl
 
 
@@ -72,3 +74,6 @@ web.tar: $(SRCS:.tex=.pdf) $(SRCS:.tex=.html)
 
 install: web.tar
 	tar xpfv web.tar -C /mit/tech-squares/www/govdocs
+
+install-stage: web.tar
+	tar xpfv web.tar -C /mit/tech-squares/www/govdocs-stage
