@@ -33,6 +33,7 @@ all-html: $(ALLSRCS:.tex=.html)
 
 .tex.dvi:
 	$(LATEX_ENV) $(LATEX) $<
+	$(LATEX_ENV) $(LATEX) $<
 
 # dvips version 5.86e and 5.92b fail to write a %%CreationDate
 .dvi.ps:
