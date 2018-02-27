@@ -6,8 +6,8 @@ jobs:
      steps:
        - checkout
        - run: apt-get update && apt-get install -y latex2html make git wget tidy
-       - run: make ALLOW_FETCH=1
-       - run: mkdir artifacts && cp *.pdf *.html artifacts/
+       - run: make ALLOW_FETCH=1 all web.tar
+       - run: mkdir artifacts && cp *.pdf *.html web.tar artifacts/
 
        - store_artifacts:
            path: artifacts
