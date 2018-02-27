@@ -57,8 +57,8 @@ local/lib/tex/macros:
 endif
 
 %.dvi : %.tex
-	$(LATEX_ENV) $(LATEX) $<
-	$(LATEX_ENV) $(LATEX) $<
+	$(LATEX_ENV) $(LATEX) -halt-on-error $<
+	$(LATEX_ENV) $(LATEX) -halt-on-error $<
 
 # dvips version 5.86e and 5.92b fail to write a %%CreationDate
 %.ps : %.dvi
