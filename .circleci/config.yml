@@ -2,8 +2,12 @@ version: 2
 jobs:
    build:
      docker:
-       - image: koppor/texlive
+       - image: ubuntu:16.04
      steps:
        - checkout
-       - run: apt-get update && apt-get install -y latex2html
+       - run: apt-get update && apt-get install -y latex2html make git wget tidy
        - run: make ALLOW_FETCH=1
+       - run: mkdir artifacts && cp *.pdf *.html artifacts/
+
+       - store_artifacts:
+           path: artifacts

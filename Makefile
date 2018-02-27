@@ -42,6 +42,7 @@ ifeq ($(ALLOW_FETCH),1)
 local/bin/ts-html-convert:
 	mkdir -p local/bin/
 	wget https://tech-squares.scripts.mit.edu/ts-html-convert --output-document="$@"
+	#sed --in-place -e 's#/usr/athena/bin/perl#/usr/bin/perl#' "$@"
 	chmod +x "$@"
 
 local/lib/tex/macros:
