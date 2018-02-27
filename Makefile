@@ -16,9 +16,16 @@ all-ps: $(ALLSRCS:.tex=.ps)
 all-pdf: $(ALLSRCS:.tex=.pdf)
 all-html: $(ALLSRCS:.tex=.html)
 
- TS_HTML_CONVERT = /mit/tech-squares/arch/@sys/bin/ts-html-convert
+LOCKER_PATH = /mit/tech-squares
+ifneq (,$(wildcard $(LOCKER_PATH)))
+ TS_HTML_CONVERT = $(LOCKER_PATH)/arch/@sys/bin/ts-html-convert
+ TS_TEX_LIBS = $(LOCKER_PATH)/lib/tex/macros
+else
+ TS_HTML_CONVERT = local/bin/ts-html-convert
+ TS_TEX_LIBS = local/lib/tex/macros
+endif
 
- TEXLIBDIR=/mit/tech-squares/lib/tex/macros:../../lib/tex/macros
+ TEXLIBDIR=$(TS_TEX_LIBS)
 
  LATEX_ENV=TEXINPUTS=.:$(TEXLIBDIR):
  DVIPS_ENV=DVIPSHEADERS=.:$(TEXLIBDIR):
@@ -31,24 +38,42 @@ all-html: $(ALLSRCS:.tex=.html)
 
 .SUFFIXES: .tex .dvi .ps .pdf .html
 
-.tex.dvi:
+ifeq ($(ALLOW_FETCH),1)
+local/bin/ts-html-convert:
+	mkdir -p local/bin/
+	wget https://tech-squares.scripts.mit.edu/ts-html-convert --output-document="$@"
+	chmod +x "$@"
+
+local/lib/tex/macros:
+	git clone https://github.com/tech-squares/tex-libs local/lib/tex
+else
+local/bin/ts-html-convert:
+	@echo "AFS is not accessible, and you aren't allowing fetching. Fix AFS, or pass ALLOW_FETCH=1."
+	@exit 1
+
+local/lib/tex/macros:
+	@echo "AFS is not accessible, and you aren't allowing fetching. Fix AFS, or pass ALLOW_FETCH=1."
+	@exit 1
+endif
+
+%.dvi : %.tex
 	$(LATEX_ENV) $(LATEX) $<
 	$(LATEX_ENV) $(LATEX) $<
 
 # dvips version 5.86e and 5.92b fail to write a %%CreationDate
-.dvi.ps:
+%.ps : %.dvi
 	$(DVIPS_ENV) $(DVIPS) $(DVIPS_FLAGS) -o - $< | \
 	  sed -e "`echo '1a\'; echo '%%CreationDate:'` `date`" > $@
 
-.ps.pdf:
+%.pdf : %.ps
 	$(PS2PDF) $(PS2PDF_FLAGS) $< $@
 
-.tex.html:
+%.html : %.tex $(TS_HTML_CONVERT)
 	$(LATEX2HTML) $< && \
 	$(TS_HTML_CONVERT) govdocs/ $*/$@ > $@
 	rm -r $*/
 
-$(ALLSRCS:.tex=.dvi): bylaws.cls
+$(ALLSRCS:.tex=.dvi): bylaws.cls | $(TS_TEX_LIBS)
 $(ALLSRCS:.tex=.html): bylaws.perl $(TS_HTML_CONVERT)
 safer-dances.html safer-dances-procedures.html : article.perl hyperref.perl
 2015faq.html : hyperref.perl
@@ -57,7 +82,12 @@ safer-dances.html safer-dances-procedures.html : article.perl hyperref.perl
 mostlyclean:
 	-rm *.aux *.out *.log *.dvi *.ilg *.ind *.ps web.tar
 
-clean: mostlyclean
+localclean:
+ifeq ($(ALLOW_FETCH),1)
+	-rm local/bin/ts-html-convert
+endif
+
+clean: mostlyclean localclean
 	-rm *.idx *.pdf *.html
 
 distclean: clean

@@ -6,4 +6,4 @@ jobs:
      steps:
        - checkout
        - run: apt-get update && apt-get install -y latex2html
-       - run: make
+       - run: make ALLOW_FETCH=1
