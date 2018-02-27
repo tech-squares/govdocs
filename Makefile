@@ -57,6 +57,12 @@ local/lib/tex/macros:
 	@exit 1
 endif
 
+%.old-$(HASH).tex:
+	git show $(HASH):$*.tex > policies.old-$(HASH).tex
+
+%.diff-$(HASH).tex: %.old-$(HASH).tex %.tex
+	latexdiff "$<" "$*.tex" > "$*.diff-$(HASH).tex"
+
 %.dvi : %.tex
 	$(LATEX_ENV) $(LATEX) -halt-on-error $<
 	$(LATEX_ENV) $(LATEX) -halt-on-error $<
