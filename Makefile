@@ -58,7 +58,7 @@ local/lib/tex/macros:
 endif
 
 %.old-$(HASH).tex:
-	git show $(HASH):$*.tex > policies.old-$(HASH).tex
+	git show $(HASH):$*.tex > $*.old-$(HASH).tex
 
 %.diff-$(HASH).tex: %.old-$(HASH).tex %.tex
 	latexdiff "$<" "$*.tex" > "$*.diff-$(HASH).tex"
