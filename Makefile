@@ -4,7 +4,7 @@
 # $Id$
 # This Makefile tested with GNU make
 
-SRCS = constit.tex policies.tex safer-dances.tex safer-dances-procedures.tex
+SRCS = constit.tex policies.tex safer-dances.tex safer-dances-procedures.tex photo.tex
 
 ALLSRCS = $(SRCS) 2015faq.tex
 
@@ -82,7 +82,7 @@ endif
 
 $(ALLSRCS:.tex=.dvi): bylaws.cls | $(TS_TEX_LIBS)
 $(ALLSRCS:.tex=.html): bylaws.perl $(TS_HTML_CONVERT)
-safer-dances.html safer-dances-procedures.html : article.perl hyperref.perl
+safer-dances.html safer-dances-procedures.html photo.html : article.perl hyperref.perl
 2015faq.html : hyperref.perl
 
 
