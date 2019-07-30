@@ -21,6 +21,9 @@ pages:
   stage: publish
 
   script:
+    # really we're not doing anything, besides triggering the special
+    # publish behavior
+    - :
 
   artifacts:
     paths:
