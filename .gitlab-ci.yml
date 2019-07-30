@@ -20,6 +20,8 @@ pages:
   # https://gitlab.com/help/user/project/pages/getting_started_part_four.md
   stage: publish
 
+  script:
+
   artifacts:
     paths:
       - public
