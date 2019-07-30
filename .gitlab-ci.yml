@@ -1,0 +1,34 @@
+stages:
+  - build
+  - publish
+
+build docs:
+  stage: build
+  script:
+    - time apt-get update
+    - time env DEBIAN_FRONTEND=noninteractive apt-get install -y latex2html make git wget tidy 
+    - make ALLOW_FETCH=1 all web.tar
+    - mkdir public && cp *.pdf *.html web.tar public/
+
+  artifacts:
+    paths:
+      - public/
+    expire_in: 1 week
+
+pages:
+  # "pages" job name is special, and triggers creation of GitLab pages:
+  # https://gitlab.com/help/user/project/pages/getting_started_part_four.md
+  stage: publish
+
+  script:
+    # really we're not doing anything, besides triggering the special
+    # publish behavior
+    - ":"
+
+  artifacts:
+    paths:
+      - public
+    expire_in: 1 month
+
+  only:
+    - master
