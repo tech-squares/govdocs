@@ -7,4 +7,5 @@
 *.toc
 *.out
 *.html
+!index.html
 web.tar
