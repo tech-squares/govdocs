@@ -2,10 +2,10 @@ version: 2
 jobs:
    build:
      docker:
-       - image: ubuntu:16.04
+       - image: ubuntu:22.04
      steps:
        - checkout
-       - run: apt-get update && apt-get install -y latex2html make git wget tidy
+       - run: apt-get update && env DEBIAN_FRONTEND=noninteractive apt-get install -y latex2html make git wget tidy
        - run: make ALLOW_FETCH=1 all web.tar
        - run: mkdir artifacts && cp *.pdf *.html web.tar artifacts/
 
