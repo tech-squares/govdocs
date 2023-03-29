@@ -31,4 +31,4 @@ pages:
     expire_in: 1 month
 
   only:
-    - master
+    - main
