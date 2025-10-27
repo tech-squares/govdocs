@@ -77,7 +77,7 @@ endif
 
 %.html : %.tex $(TS_HTML_CONVERT)
 	$(LATEX2HTML) $< && \
-	$(TS_HTML_CONVERT) govdocs/ $*/$@ > $@
+	perl $(TS_HTML_CONVERT) govdocs/ $*/$@ > $@
 	rm -r $*/
 
 $(ALLSRCS:.tex=.dvi): bylaws.cls | $(TS_TEX_LIBS)
@@ -115,3 +115,7 @@ install: web.tar
 
 install-stage: web.tar
 	tar xpfv web.tar -C /mit/tech-squares/www/govdocs-stage
+
+install-nix: web.tar
+	cp web.tar $$out
+	cp *.pdf *.html $$out
