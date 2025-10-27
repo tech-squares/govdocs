@@ -95,7 +95,7 @@ ifeq ($(ALLOW_FETCH),1)
 endif
 
 clean: mostlyclean localclean
-	-rm *.idx *.pdf *.html
+	-rm *.idx $(ALLSRCS:.tex=.pdf) $(ALLSRCS:.tex=.html)
 
 distclean: clean
 	-rm *~
