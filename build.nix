@@ -58,7 +58,7 @@ in stdenv.mkDerivation rec {
   installPhase = ''
     runHook preInstall
     mkdir $out
-    make install-nix
+    make install-out OUT=$out
     runHook postInstall
   '';
 

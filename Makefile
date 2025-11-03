@@ -116,6 +116,6 @@ install: web.tar
 install-stage: web.tar
 	tar xpfv web.tar -C /mit/tech-squares/www/govdocs-stage
 
-install-nix: web.tar
-	cp web.tar $$out
-	cp *.pdf *.html $$out
+install-out: web.tar
+	cp web.tar $(OUT)
+	cp *.pdf *.html $(OUT)

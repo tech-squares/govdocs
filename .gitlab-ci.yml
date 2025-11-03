@@ -8,7 +8,7 @@ build docs:
     - time apt-get update
     - time env DEBIAN_FRONTEND=noninteractive apt-get install -y latex2html make git wget tidy 
     - make ALLOW_FETCH=1 all web.tar
-    - mkdir public && cp *.pdf *.html web.tar public/
+    - mkdir public && make install-out OUT=public/
 
   artifacts:
     paths:
