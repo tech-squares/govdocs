@@ -47,6 +47,9 @@ local/bin/ts-html-convert:
 
 local/lib/tex/macros:
 	git clone https://github.com/tech-squares/tex-libs local/lib/tex
+
+lib-deps: local/bin/ts-html-convert local/lib/tex/macros
+.PHONY: lib-deps
 else
 local/bin/ts-html-convert:
 	@echo "AFS is not accessible, and you aren't allowing fetching. Fix AFS, or pass ALLOW_FETCH=1."
