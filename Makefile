@@ -16,6 +16,10 @@ all-ps: $(ALLSRCS:.tex=.ps)
 all-pdf: $(ALLSRCS:.tex=.pdf)
 all-html: $(ALLSRCS:.tex=.html)
 
+ifneq (,$(HASH))
+all-pdf: $(SRCS:.tex=.diff-$(HASH).pdf)
+endif
+
 LOCKER_PATH = /mit/tech-squares
 ifneq (,$(wildcard $(LOCKER_PATH)))
  TS_HTML_CONVERT = $(LOCKER_PATH)/arch/@sys/bin/ts-html-convert
