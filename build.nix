@@ -6,6 +6,8 @@
   texlive,
   perl,
   ghostscript_headless,
+  git,
+  hash ? "",
 }:
 let
   tex = (texlive.combine {
@@ -20,7 +22,7 @@ in stdenv.mkDerivation rec {
 
   src = fs.toSource {
     root = ./.;
-    fileset = (fs.unions [
+    fileset = (fs.unions ([
       ./Makefile
       ./bylaws.cls
       ./techlogo.gif
@@ -35,7 +37,14 @@ in stdenv.mkDerivation rec {
         )
         (fs.gitTracked ./.)
       )
-    ]);
+    ] ++ (if hash != "" then
+      [(fs.fileFilter
+        ({hasExt, ...}: (
+          (hasExt "old-${hash}.tex") # diff
+        ))
+        ./.
+      )]
+    else [])));
   };
 
   buildInputs = [
@@ -50,7 +59,7 @@ in stdenv.mkDerivation rec {
   ];
 
   buildPhase = ''
-    make
+    make HASH=${hash}
   '';
 
   installPhase = ''

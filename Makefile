@@ -15,9 +15,13 @@ all-dvi: $(ALLSRCS:.tex=.dvi)
 all-ps: $(ALLSRCS:.tex=.ps)
 all-pdf: $(ALLSRCS:.tex=.pdf)
 all-html: $(ALLSRCS:.tex=.html)
+.PHONY: all-dvi all-ps all-pdf all-html
 
 ifneq (,$(HASH))
-all-pdf: $(SRCS:.tex=.diff-$(HASH).pdf)
+old-tex: $(SRCS:.tex=.old-$(HASH).tex)
+diff-pdf: $(SRCS:.tex=.diff-$(HASH).pdf)
+all-pdf: diff-pdf
+.PHONY: old-tex diff-pdf
 endif
 
 LOCKER_PATH = /mit/tech-squares
