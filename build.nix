@@ -1,7 +1,6 @@
 {
   stdenv, lib,
   gnumake,
-  strace,
   latex2html,
   html-tidy,
   texlive,
@@ -41,7 +40,6 @@ in stdenv.mkDerivation rec {
 
   buildInputs = [
     gnumake
-    strace
     tex
     (latex2html.overrideAttrs (old: {
       buildInputs = old.buildInputs ++ [tex];
