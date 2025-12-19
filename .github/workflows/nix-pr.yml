@@ -29,14 +29,17 @@ jobs:
           #done
       - name: Run the build
         run: nix-build --argstr hash HEAD^1
-      # Symlinks don't seem to be followed in upload-artifact@v5
+      # Symlinks don't seem to be followed in upload-artifact@v6
       # (https://github.com/actions/upload-artifact/issues/92)
       # so use this hack with readlink and an env var to work around that
       - name: Read nix result symlink
-        run: echo "UPLOAD_PATH=$(readlink -f result)" >> $GITHUB_ENV
+        # Also dump the path so it's easy to see if the same thing got built
+        run: readlink -f result; echo "UPLOAD_PATH=$(readlink -f result)" >> $GITHUB_ENV
       - name: 'Upload Artifact'
         uses: actions/upload-artifact@v6
         with:
           name: result
           path: ${{ env.UPLOAD_PATH }}
-      # Ideally we'd have individually-linkable PDFs
+          # Ideally we'd have individually-linkable PDFs but per
+          # https://github.com/actions/upload-artifact?tab=readme-ov-file#zip-archives
+          # we can only get a .zip
