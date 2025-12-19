@@ -9,3 +9,7 @@
 *.html
 !index.html
 web.tar
+# Local version of some libraries
+local/
+# Nix build output
+result

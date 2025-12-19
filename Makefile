@@ -15,6 +15,14 @@ all-dvi: $(ALLSRCS:.tex=.dvi)
 all-ps: $(ALLSRCS:.tex=.ps)
 all-pdf: $(ALLSRCS:.tex=.pdf)
 all-html: $(ALLSRCS:.tex=.html)
+.PHONY: all-dvi all-ps all-pdf all-html
+
+ifneq (,$(HASH))
+old-tex: $(SRCS:.tex=.old-$(HASH).tex)
+diff-pdf: $(SRCS:.tex=.diff-$(HASH).pdf)
+all-pdf: diff-pdf
+.PHONY: old-tex diff-pdf
+endif
 
 LOCKER_PATH = /mit/tech-squares
 ifneq (,$(wildcard $(LOCKER_PATH)))
@@ -27,7 +35,7 @@ endif
 
  TEXLIBDIR=$(TS_TEX_LIBS)
 
- LATEX_ENV=TEXINPUTS=.:$(TEXLIBDIR):
+ LATEX_ENV=TEXINPUTS=.:$(TEXLIBDIR):$(TEXINPUTS)
  DVIPS_ENV=DVIPSHEADERS=.:$(TEXLIBDIR):
 
  LATEX = latex
@@ -47,6 +55,9 @@ local/bin/ts-html-convert:
 
 local/lib/tex/macros:
 	git clone https://github.com/tech-squares/tex-libs local/lib/tex
+
+lib-deps: local/bin/ts-html-convert local/lib/tex/macros
+.PHONY: lib-deps
 else
 local/bin/ts-html-convert:
 	@echo "AFS is not accessible, and you aren't allowing fetching. Fix AFS, or pass ALLOW_FETCH=1."
@@ -77,7 +88,7 @@ endif
 
 %.html : %.tex $(TS_HTML_CONVERT)
 	$(LATEX2HTML) $< && \
-	$(TS_HTML_CONVERT) govdocs/ $*/$@ > $@
+	perl $(TS_HTML_CONVERT) govdocs/ $*/$@ > $@
 	rm -r $*/
 
 $(ALLSRCS:.tex=.dvi): bylaws.cls | $(TS_TEX_LIBS)
@@ -95,7 +106,7 @@ ifeq ($(ALLOW_FETCH),1)
 endif
 
 clean: mostlyclean localclean
-	-rm *.idx *.pdf *.html
+	-rm *.idx $(ALLSRCS:.tex=.pdf) $(ALLSRCS:.tex=.html)
 
 distclean: clean
 	-rm *~
@@ -115,3 +126,7 @@ install: web.tar
 
 install-stage: web.tar
 	tar xpfv web.tar -C /mit/tech-squares/www/govdocs-stage
+
+install-out: web.tar
+	cp web.tar $(OUT)
+	cp *.pdf *.html $(OUT)
