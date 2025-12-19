@@ -17,7 +17,7 @@ jobs:
       - name: Run the build
         run: nix-build
       - name: 'Upload Artifact'
-        uses: actions/upload-artifact@v5
+        uses: actions/upload-artifact@v6
         with:
           name: artifacts
           # Unfortunately symlinks work poorly, so this doesn't actually work
