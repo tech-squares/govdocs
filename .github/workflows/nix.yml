@@ -32,6 +32,10 @@ jobs:
           # we can only get a .zip
       - uses: actions/upload-artifact@v7
         with:
+          path: result/web.tar
+          archive: false
+      - uses: actions/upload-artifact@v7
+        with:
           path: result/constit.pdf
           archive: false
       - uses: actions/upload-artifact@v7
