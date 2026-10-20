@@ -23,10 +23,24 @@ jobs:
         # Also dump the path so it's easy to see if the same thing got built
         run: readlink -f result; echo "UPLOAD_PATH=$(readlink -f result)" >> $GITHUB_ENV
       - name: 'Upload Artifact'
-        uses: actions/upload-artifact@v6
+        uses: actions/upload-artifact@v7
         with:
           name: result
           path: ${{ env.UPLOAD_PATH }}
           # Ideally we'd have individually-linkable PDFs but per
           # https://github.com/actions/upload-artifact?tab=readme-ov-file#zip-archives
           # we can only get a .zip
+      - uses: actions/upload-artifact@v7
+        with:
+          path: result/constit.pdf
+          archive: false
+      - uses: actions/upload-artifact@v7
+        with:
+          path: result/policies.pdf
+          archive: false
+      - uses: actions/upload-artifact@v7
+        with:
+          path: result/safer-dances.pdf
+          archive: false
+      # There are more but at four lines each I don't really feel like
+      # including the rest, and these seem like the most interesting

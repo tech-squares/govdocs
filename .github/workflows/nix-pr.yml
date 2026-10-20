@@ -36,7 +36,7 @@ jobs:
         # Also dump the path so it's easy to see if the same thing got built
         run: readlink -f result; echo "UPLOAD_PATH=$(readlink -f result)" >> $GITHUB_ENV
       - name: 'Upload Artifact'
-        uses: actions/upload-artifact@v6
+        uses: actions/upload-artifact@v7
         with:
           name: result
           path: ${{ env.UPLOAD_PATH }}
